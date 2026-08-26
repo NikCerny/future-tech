@@ -1,0 +1,8 @@
+@use '../helpers/' as *;
+
+.logo {
+    max-width: fluid-to-laptop(143, 180);
+    @include laptop {
+        max-width: fluid(125, 143);
+    }
+}

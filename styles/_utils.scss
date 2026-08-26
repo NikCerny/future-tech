@@ -10,6 +10,15 @@
   padding-inline: var(--container-padding-x);
 }
 
+.extended-click-area {
+  position: relative;
+  &::before {
+    content: '';
+    @include abs-center;
+    @include square(rem(44));
+  }
+}
+
 .hidden-mobile {
   @include mobile {
     display: none !important;
