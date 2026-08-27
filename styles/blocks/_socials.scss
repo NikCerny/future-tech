@@ -1,0 +1,14 @@
+@use '../helpers/' as *;
+
+.socials {
+    &__list {
+        display: flex;
+        align-items: center;
+        column-gap: fluid-to-laptop(14,20);
+        color: var(--color-white);
+    }
+
+    @include mobile {
+        order: -1;
+    }
+}

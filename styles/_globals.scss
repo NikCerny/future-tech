@@ -45,7 +45,9 @@ a {
     transition-duration: 0s !important;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6
+{
     color: var(--color-white);
 }
 
@@ -95,8 +97,11 @@ h5 {
     }    
 }
 
-h6 {
-    font-size: fluid(16,20);
+h6, .h6 {
+    font-size: fluid(20,20);
+    @include laptop {
+        font-size: fluid(16,18);
+    }    
 }
 
 

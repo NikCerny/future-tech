@@ -1,0 +1,100 @@
+@use '../helpers/' as *;
+
+.footer {
+    color: var(--color-dark-40);
+    line-height: 1.3;
+
+    &__menu {
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        gap: fluid-to-laptop(50,80);
+        align-items: start;
+        @include laptop {
+            gap: fluid(20,50);
+        }
+
+        @include tablet {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        &-main-link{
+            font-weight: 500;
+        }
+        &-column {
+            display: grid;
+            row-gap: fluid-to-laptop(28,36);
+            @include laptop {
+                row-gap: fluid(16,28);
+            }
+            &:last-child {
+                @include mobile-s {
+                    grid-column: 1 / -1;
+                    .footer__menu-list {
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        gap: rem(12);
+                    }
+                }
+            }
+        }
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: fluid-to-laptop(14,18);
+            @include laptop {
+                row-gap: fluid(8,14);
+            }
+        }
+        &-item {
+            display: flex;
+            column-gap: rem(8);
+            align-items: center;
+
+        }
+        &-link {
+            .icon {
+                &::after {
+                    --size: #{rem(14)};
+                }
+            }
+        }
+        &-link.button {
+            padding: rem(10) rem(16);
+            @include laptop {
+                padding: rem(8) rem(14);
+            }
+        }
+    }
+
+    &__body {
+        padding-block: fluid-to-laptop(60,80);
+        @include laptop {
+            padding-block: fluid(40,60);
+        }
+        border-bottom: rem(1) solid var(--color-dark-15);
+    }
+
+    &__extra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: fluid-to-laptop(24,40);
+
+        &-menu {
+            display: flex;
+            column-gap: fluid-to-laptop(8,11);
+            &--delimeter {
+                color: var(--color-dark-15);
+            }
+            
+        }
+        
+        @include mobile {
+            flex-direction: column;
+            row-gap: rem(20);
+        }
+    }
+
+ 
+
+}
