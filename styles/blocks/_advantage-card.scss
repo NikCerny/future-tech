@@ -18,12 +18,21 @@
             @include square(fluid-to-laptop(44,52));
             border-radius: 50%;
             background: url('../../icons/arrow-top-right-black.svg') center no-repeat var(--color-accent);
-          
+            transition-duration: var(--transition-duration);
             @include laptop {
                 @include square(fluid(40,44));
                 background-size: rem(14);
             }
- 
+
+        }
+        border: var(--border);
+        border-color: transparent;
+        @include hover {
+            
+            border-color: var(--color-accent);
+            &::after {
+                transform: translateY(-50%) rotate(-135deg);
+            }
         }
     }
     &__title {

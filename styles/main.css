@@ -767,12 +767,33 @@ h6, .h6 {
   height: clamp(2.75rem, 1.25rem + 1.6666666667vw, 3.25rem);
   border-radius: 50%;
   background: url("../../icons/arrow-top-right-black.svg") center no-repeat var(--color-accent);
+  transition-duration: var(--transition-duration);
 }
 @media (width <= 90.06125rem) {
   .advantage-card__link::after {
     width: clamp(2.5rem, 2.4071428571rem + 0.380952381vw, 2.75rem);
     height: clamp(2.5rem, 2.4071428571rem + 0.380952381vw, 2.75rem);
     background-size: 0.875rem;
+  }
+}
+.advantage-card__link {
+  border: var(--border);
+  border-color: transparent;
+}
+@media (any-hover: hover) {
+  .advantage-card__link:hover {
+    border-color: var(--color-accent);
+  }
+  .advantage-card__link:hover::after {
+    transform: translateY(-50%) rotate(-135deg);
+  }
+}
+@media (any-hover: none) {
+  .advantage-card__link:active {
+    border-color: var(--color-accent);
+  }
+  .advantage-card__link:active::after {
+    transform: translateY(-50%) rotate(-135deg);
   }
 }
 .advantage-card__title {
