@@ -1,0 +1,28 @@
+@use '../helpers/' as *;
+
+.team {
+    display: flex;
+    padding: fluid-to-laptop(8,10);
+    background-color: var(--color-dark-10);
+    border: var(--border);
+    border-radius: rem(100);
+    --personImageSize: #{rem(60)};
+
+    &__person {
+        width: var(--personImageSize);
+        border-radius: 50%;
+        border: rem(2) solid var(--color-dark-40);
+        background-color: var(--color-dark-15);
+        &:not(:first-child){
+            margin-left: rem(-14);
+        }
+        @include laptop {
+            --personImageSize: #{rem(50)};
+            border-width: rem(1);
+        }
+        @include mobile-s {
+            --personImageSize: #{rem(40)};
+        }
+
+    }
+}

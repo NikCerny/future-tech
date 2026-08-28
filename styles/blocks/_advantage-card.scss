@@ -1,0 +1,48 @@
+@use '../helpers/' as *;
+
+.advantage-card{
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid-to-laptop(20,30);
+    @include laptop {
+        row-gap: fluid(15,20);
+    }
+    &__link {
+        flex-direction: column;
+        row-gap: fluid-to-laptop(2,4);
+        position: relative;
+        &::after {
+            content: '';
+            @include abs-y;
+            right: 0;
+            @include square(fluid-to-laptop(44,52));
+            border-radius: 50%;
+            background: url('../../icons/arrow-top-right-black.svg') center no-repeat var(--color-accent);
+          
+            @include laptop {
+                @include square(fluid(40,44));
+                background-size: rem(14);
+            }
+ 
+        }
+    }
+    &__title {
+        font-weight: 500;
+        font-family: var(--font-family-base);
+    }
+    &__details {
+        font-family: var(--font-family-accent);
+        color: var(--color-gray-60);
+        font-size: fluid-to-laptop(16,20);
+        @include laptop {
+            font-size: fluid(14,16);
+        }
+    }
+
+    &__image {
+        @include square(fluid-to-laptop(40,50));
+        @include laptop {
+            @include square(fluid(30,40));
+        }
+    }
+}

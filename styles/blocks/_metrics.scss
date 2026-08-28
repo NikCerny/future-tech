@@ -1,0 +1,35 @@
+@use '../helpers/' as *;
+
+.metrics {
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    &__item {
+        display: flex;
+        flex-direction: column-reverse;
+        row-gap: fluid-to-laptop(2,10);
+        padding: fluid-to-laptop(30,50);
+        padding-right: fluid-to-laptop(40,50);
+        &:first-child {
+            padding-left: 0;
+        }
+        &:not(:last-child){
+            border-right: var(--border);
+        }
+        @include laptop {
+            padding: fluid(30,20);
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+    &__value {
+        font-weight: 600;
+        font-family: var(--font-family-base);
+    }
+
+    &__plus {
+        color: var(--color-accent);
+    }
+}

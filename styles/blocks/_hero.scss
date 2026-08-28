@@ -1,0 +1,124 @@
+@use '../helpers/' as *;
+
+.hero {
+   
+    &__main {
+        @include tablet-above {
+            display: grid;
+            grid-template-columns: 56% auto; // 893+50 padding / container-width * 100%
+            grid-template-areas: 
+                'body resources-preview'
+                'metrics resources-preview';
+        }
+    }
+
+    &__body {
+        grid-area: body;
+        padding-top: fluid-to-laptop(100,150);
+        padding-right: fluid-to-laptop(40,50);
+        padding-bottom: fluid(30,100);
+        @include laptop {
+            padding-top: fluid(40,100);
+            padding-right: fluid(0,40);
+        }
+    }
+
+    &__subtitle {
+        font-size: fluid-to-laptop(22,30);
+        font-family: var(--font-family-accent);
+        font-weight: 500;
+        color: var(--color-dark-40);
+        &:not(:last-child){
+            margin-bottom: fluid-to-laptop(20,30);
+        }
+        @include laptop {
+            font-size: fluid(18,22);
+            &:not(:last-child){
+                margin-bottom: fluid(14,20);
+            }
+        }
+    }
+
+    &__title{
+        &:not(:last-child){
+            margin-bottom: fluid-to-laptop(14,20);
+        }
+        @include laptop {
+            &:not(:last-child){
+            margin-bottom: fluid(10,14);
+            }
+        }        
+    }
+
+    &__metrics {
+        grid-area: metrics;
+
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(50% - 50vw);
+            right: 0;
+            border-top: var(--border);
+        }
+    }
+
+    &__resources-preview {
+        grid-area: resources-preview;
+        --color-dark-rgb: 20, 20, 20; // color-dark
+        background:
+            linear-gradient(
+                to bottom right,
+                rgba(var(--color-dark-rgb), 0.38) -25%,
+                rgb(var(--color-dark-rgb)) 100%
+            ),
+            url("../../images/hero.svg") 0 0 / cover no-repeat;
+            padding-left: fluid-to-laptop(50,80);
+            padding-bottom: fluid-to-laptop(50,80);
+            border-left: var(--border);
+        @include laptop {
+            padding-inline: fluid(40,50);
+            padding-bottom: fluid(40,50);
+        }
+        @include tablet {
+            margin-right: calc(var(--container-padding-x) * -1);
+            margin-left: calc(var(--container-padding-x) * -1);
+            padding-top: rem(100);
+        }
+    }
+
+    &__advantages {
+        border-block: var(--border);
+        &-list {
+            
+            @include tablet-above {
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+        &-item {
+            
+            padding-block: fluid-to-laptop(40,50);
+            @include tablet-above {
+                &:not(:last-child){
+                    padding-right: fluid-to-laptop(50,80);
+                    border-right: var(--border); 
+                }
+                &:not(:first-child){
+                    padding-left: fluid-to-laptop(50,80);
+                }
+            }
+
+            @include laptop {
+                padding-block: fluid(30,40);
+            }
+            @include tablet {
+                border-block: var(--border);
+            }
+        }
+    }
+    &__description {
+        max-width: 93%;
+    }
+}

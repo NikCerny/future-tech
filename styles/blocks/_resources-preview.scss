@@ -1,0 +1,25 @@
+@use '../helpers/' as *;
+
+.resources-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start;
+    row-gap: fluid-to-laptop(20,30);
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid(4,14);
+    }
+
+    &__title {
+        font-weight: 500;
+    }
+
+    &__button {
+        @include mobile-s {
+            width: 100%;
+        }
+    }
+}

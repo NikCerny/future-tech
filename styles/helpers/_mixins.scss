@@ -38,6 +38,18 @@
     translate: -50% -50%;
 }
 
+@mixin abs-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin abs-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 @mixin square($size){
     width: $size;
     height: $size;
