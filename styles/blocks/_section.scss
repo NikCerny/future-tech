@@ -3,6 +3,7 @@
 .section {
     &__header{
         background-color: var(--color-dark-10);
+        border-bottom: var(--border);
         &-inner {
             padding-block: fluid-to-laptop(80,120);
             @include laptop {

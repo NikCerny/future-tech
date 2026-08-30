@@ -1,1 +1,88 @@
 @use '../helpers/' as *;
+
+.card {
+    @include tablet-above {
+        display: grid;
+        grid-template-columns: 37.5% auto;
+    }
+
+    &__body {
+        padding: fluid-to-laptop(60,80);
+        padding-right: 0 ;
+        
+        @include tablet {
+            padding: rem(30) rem(16);
+        }
+        @include laptop-above {
+            border-left: var(--border);
+        }
+        @include mobile {
+            border-top: var(--border);
+        }
+    }
+
+    &__preview {
+        row-gap: fluid-to-laptop(40,60);
+        
+        @include laptop {
+            row-gap: fluid(20,40);
+        }
+        @include tablet-above {
+            align-self: center;
+        }
+        @include tablet {
+            padding-block: rem(50);
+        }
+
+        &-main {
+            display: flex;
+            flex-direction: column;
+            
+            row-gap: fluid-to-laptop(40,50);
+            @include laptop {
+                row-gap: fluid(20,40);
+            }
+
+        }
+
+        &-title {
+            margin-bottom: fluid-to-laptop(10,16);
+            font-weight: 600;
+            @include laptop {
+                margin-bottom: fluid(6,10);
+            }
+
+        }
+        &-icon {
+            width: fluid-to-laptop(60,80);
+            @include laptop {
+                width: fluid(50,60);
+            }
+        }
+
+    }
+    &__grid {
+        display: grid;
+        @include tablet-above {
+            grid-template-columns: repeat(2,1fr);
+            gap: fluid-to-laptop(20,30);
+        }
+        @include laptop {
+            gap: fluid-to-laptop(10,20);
+        }
+    }
+
+    &__cell {
+        &-title {
+            font-weight: 500;
+            margin-bottom: fluid-to-laptop(16,20);
+            @include laptop {
+                margin-bottom: fluid(4,16);
+            }
+        }
+        &-description {
+            color: var(--color-gray-60);
+        }
+        
+    }
+}

@@ -27,8 +27,8 @@
 @use 'blocks/tile';
 @use 'blocks/card';
 
-.header,
-.footer,
-main > *:not(:last-child) {
-    display: none !important;
-}
+// .header,
+// .footer,
+// main > *:not(:last-child) {
+//     display: none !important;
+// }

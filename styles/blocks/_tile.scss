@@ -1,1 +1,11 @@
 @use '../helpers/' as *;
+
+.tile {
+    padding: fluid-to-laptop(30,40);
+    background-color: var(--color-dark-10);
+    border: var(--border);
+    border-radius: fluid-to-laptop(10,12);
+    @include laptop {
+        padding: fluid(24,30);
+    }
+}
