@@ -1,0 +1,17 @@
+@use '../helpers/' as *;
+
+.section {
+    &__header{
+        background-color: var(--color-dark-10);
+        &-inner {
+            padding-block: fluid-to-laptop(80,120);
+            @include laptop {
+                padding-block: (40,80);
+            }
+        }
+    }
+
+    &__subtitle {
+        margin-bottom: fluid-to-laptop(10,16);
+    }
+}

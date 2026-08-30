@@ -14,6 +14,7 @@
 
 @use 'blocks/header';
 @use 'blocks/footer';
+@use 'blocks/section';
 
 
 @use 'blocks/advantage-card';
@@ -21,3 +22,13 @@
 @use 'blocks/metrics';
 @use 'blocks/team';
 @use 'blocks/hero';
+@use 'blocks/tag';
+@use 'blocks/list';
+@use 'blocks/tile';
+@use 'blocks/card';
+
+.header,
+.footer,
+main > *:not(:last-child) {
+    display: none !important;
+}

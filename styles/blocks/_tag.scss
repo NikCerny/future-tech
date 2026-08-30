@@ -1,0 +1,15 @@
+@use '../helpers/' as *;
+
+.tag {
+    background-color: var(--color-dark-20);
+    padding: fluid-to-laptop(4,6) fluid-to-laptop(8,10);
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: fluid-to-laptop(16,20);
+    border-radius: rem(4);
+    display: inline-block;
+    @include laptop {
+        font-size: fluid(14,16);
+        
+    }
+}
