@@ -26,9 +26,8 @@
 
         }
         border: var(--border);
-        border-color: transparent;
+        border-color: transparent; // no height layout bounces when on hover border appears
         @include hover {
-            
             border-color: var(--color-accent);
             &::after {
                 transform: translateY(-50%) rotate(-135deg);
