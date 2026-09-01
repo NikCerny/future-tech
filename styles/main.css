@@ -1160,4 +1160,10 @@ h6, .h6 {
   color: var(--color-gray-60);
 }
 
+.header,
+.footer,
+main > *:not(:last-child) {
+  display: none !important;
+}
+
 /*# sourceMappingURL=main.css.map */
