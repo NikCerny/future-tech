@@ -1,0 +1,34 @@
+@use '../helpers/' as *;
+
+.blog-actions {
+    &__list {
+        display: flex;
+        column-gap: fluid-to-laptop(8,10);
+    }
+    
+    &__button {
+        background-color: var(--color-dark-10);
+        color: inherit;
+        @include flex-center(true);
+        column-gap: fluid-to-laptop(2,4);
+        border-radius: rem(100);
+        border: var(--border);
+        padding: fluid-to-laptop(6,8) fluid-to-laptop(12,16);
+        font-size: fluid-to-laptop(14,18);
+        font-family: var(--font-family-accent);
+        &.is-active[aria-label='Like'] {
+            svg * {
+                fill: var(--color-red);
+                stroke: var(--color-red);
+            }
+        }
+    }
+    &__icon-wrapper {
+        --iconWrapperSize: #{rem(24)};
+        @include square(var(--iconWrapperSize));
+        @include flex-center;
+        @include laptop {
+            --iconWrapperSize: #{rem(20)};
+        }
+    }
+}

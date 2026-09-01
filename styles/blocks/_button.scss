@@ -11,9 +11,7 @@
     border: var(--border);
     border-radius: fluid-to-laptop(8,12);
     padding: fluid-to-laptop(14,18) fluid-to-laptop(20,24);
-    @include mobile-s {
-        padding-inline: 0;
-    }
+   
 
     &--accent {
         background-color: var(--color-accent);

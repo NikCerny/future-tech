@@ -1,0 +1,23 @@
+@use '../helpers/' as *;
+
+.person-card {
+    display: flex;
+    align-items: center;
+    column-gap: fluid-to-laptop(10,16);
+    @include laptop {
+       column-gap: fluid(8,10); 
+    }
+
+    &__image {
+        width: fluid-to-laptop(60,80);
+        border-radius: 50%;
+        background-color: var(--color-dark-15);
+    }
+
+    &__name {
+        color: var(--color-white);
+        font-weight: 600;
+        font-size: fluid-to-laptop(18,20);
+    }
+    
+}

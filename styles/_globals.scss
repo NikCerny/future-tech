@@ -53,7 +53,7 @@ h1,h2,h3,h4,h5,h6,
 
 h1,h2,h3,
 .h1,.h2,.h3 {
-    font-family: --font-family-accent;
+    font-family: var(--font-family-accent);
     font-weight: 500;
 }
 

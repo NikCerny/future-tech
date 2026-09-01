@@ -7,7 +7,16 @@
         &-inner {
             padding-block: fluid-to-laptop(80,120);
             @include laptop {
-                padding-block: (40,80);
+                padding-block: fluid(40,80);
+            }
+            &:has(.section__link){
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                @include mobile {
+                    grid-template-columns: 1fr;
+                    row-gap: rem(30);
+                }
             }
         }
     }

@@ -1,0 +1,62 @@
+@use '../helpers/' as *;
+
+.blog-card {
+    display: grid;
+    grid-template-columns: 24% 1fr auto;
+    column-gap: fluid-to-laptop(40,50);
+    padding-block: fluid-to-laptop(60,80);
+    @include laptop {
+        column-gap: fluid(28,40);
+        padding-block: fluid-to-laptop(40,60);
+    }
+    @include mobile {
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 
+        'author link'
+        'body body';
+        row-gap: rem(30);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid-to-laptop(24,30);
+        @include laptop {
+            row-gap: fluid(20,24);
+        }
+        @include mobile {
+            grid-area: body;
+        }
+    }
+    &__date {
+        color: var(--color-gray-60);
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid-to-laptop(6,10);
+        @include laptop {
+            row-gap: fluid(4,6);
+        }
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid-to-laptop(24,30);
+        @include laptop {
+            row-gap: fluid(20,24);
+        }
+    }
+    &__link {
+        align-self: center;
+        @include mobile {
+            grid-area: link;
+        }
+    }
+    &__author {
+        align-self: start;
+        @include mobile {
+            grid-area: author;
+        }
+    }
+}
