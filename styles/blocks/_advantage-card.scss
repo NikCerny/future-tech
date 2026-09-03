@@ -26,7 +26,7 @@
 
         }
         border: var(--border);
-        border-color: transparent; // no height layout bounces when on hover border appears
+        border-color: transparent; // no  layout bounces when on hover border appears
         @include hover {
             border-color: var(--color-accent);
             &::after {

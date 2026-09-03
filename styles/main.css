@@ -1359,7 +1359,6 @@ h6, .h6 {
 }
 
 .header,
-.footer,
 main > *:not(:last-child) {
   display: none !important;
 }
