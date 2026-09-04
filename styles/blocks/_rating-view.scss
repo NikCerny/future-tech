@@ -1,0 +1,24 @@
+@use '../helpers/' as *;
+
+.rating-view {
+    @include flex-center(true);
+    border: var(--border);
+    background-color: var(--color-dark);
+    padding: fluid-to-laptop(8,10) fluid-to-laptop(12,16);
+    column-gap: fluid-to-laptop(4,7);
+    border-radius: rem(100);
+
+    &__star {
+        --size: #{rem(24)};
+        @include square(var(--size));
+        background-image: url('/icons/star.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        &.is-active {
+            background-image: url('/icons/star-yellow.svg');
+        }
+        @include laptop {
+            --size: #{rem(20)};
+        }
+    }
+}

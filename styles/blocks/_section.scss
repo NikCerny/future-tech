@@ -24,4 +24,9 @@
     &__subtitle {
         margin-bottom: fluid-to-laptop(10,16);
     }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+    }
 }

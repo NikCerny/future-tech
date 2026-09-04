@@ -30,9 +30,9 @@
 @use 'blocks/blog-actions';
 @use 'blocks/blog-card';
 @use 'blocks/downloads';
-
-
-
+@use 'blocks/border-grid';
+@use 'blocks/review-card';
+@use 'blocks/rating-view';
 
 
 @use 'utils'; // important AS LAST for style weight

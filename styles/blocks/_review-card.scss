@@ -1,0 +1,45 @@
+@use '../helpers/' as *;
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: fluid-to-laptop(50,60);
+
+    &__body {
+        position: relative;
+        padding: fluid-to-laptop(24,30);
+        padding-top: fluid-to-laptop(40,50);
+        @include laptop {
+            padding: fluid(20,24);
+            padding-top: fluid(30,40);
+        }
+    }
+    &__rating-view {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        translate: -50% -50%;
+    }
+
+    &__description {
+        color: var(--color-white);
+        text-align: center;
+        font-size: fluid-to-laptop(16,18);
+        @include laptop {
+            font-size: fluid(14,16);
+        }
+    }
+
+    &__author {
+        .person-card__image {
+            width: fluid-to-laptop(50,60);
+        }
+        .person-card__name {
+            font-weight: 500;
+        }
+        .person-card__department {
+            color: var(--color-dark-40);
+        }
+    }
+}

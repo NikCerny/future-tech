@@ -1,0 +1,39 @@
+@use '../helpers/' as *;
+
+.border-grid {
+    display: grid;
+    @include tablet-above {
+        grid-template-columns: repeat(3,1fr);
+    }
+
+
+    &__item {
+        padding-block: fluid-to-laptop(60,80);
+        position: relative;
+        @include laptop {
+            padding-block: fluid-to-laptop(40,60);
+        }
+
+        @include tablet-above {
+
+            padding-inline: fluid-to-laptop(40,50);
+            
+            &:not(:nth-child(3n)){
+                border-right: var(--border);
+            }
+            &:nth-child(3n + 2):nth-child(n + 5)::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: calc(50% - 50vw);
+                right: calc(50% - 50vw);
+                border-top: var(--border);
+            }
+        }
+        @include mobile {
+            &:not(:last-child){
+                border-bottom: var(--border);
+            }
+        }
+    }
+}
