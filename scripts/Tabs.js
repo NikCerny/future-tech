@@ -57,7 +57,7 @@ class Tabs {
     }
 
     onKeyDown = (event) => {
-        const { key, metaKey } = event
+        const { key } = event
 
         const action = {
             ArrowLeft: this.previousTab,
