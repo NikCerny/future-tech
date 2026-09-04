@@ -1,0 +1,25 @@
+@use '../helpers/' as *;
+
+.downloads {
+    &__list {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        column-gap: fluid-to-laptop(30,50);
+        padding: fluid-to-laptop(20,30);
+    }
+
+    &__team {
+        --personImageSize: #{rem(50)};
+        @include laptop {
+            --personImageSize: #{rem(40)};
+        }
+    }
+    
+    &__key {
+        color: var(--color-gray-60);
+        margin-bottom: fluid-to-laptop(2,4);
+    }
+
+}

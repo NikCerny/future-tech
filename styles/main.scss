@@ -1,7 +1,6 @@
 @use 'normalize';
 @use 'fonts';
 @use 'variables';
-@use 'utils';
 @use 'globals';
 @use 'animations';
 
@@ -30,9 +29,10 @@
 @use 'blocks/person-card';
 @use 'blocks/blog-actions';
 @use 'blocks/blog-card';
+@use 'blocks/downloads';
 
-.header,
 
-main > *:not(:last-child) {
-    display: none !important;
-}
+
+
+
+@use 'utils'; // important AS LAST for style weight

@@ -20,6 +20,15 @@
         &::after {
             background-image: url('/icons/arrow-top-right.svg');
         }
-        
+    }
+
+    &--yellow-eye {
+        &::after {
+            --size: #{rem(24)};
+            background-image: url('/icons/eye.svg');
+            @include laptop {
+                --size: #{rem(20)};
+            }
+        }
     }
 }
