@@ -1,0 +1,35 @@
+@use '../helpers/' as *;
+
+.about-list {
+    display: grid;
+    background-color: var(--color-dark);
+    padding: fluid-to-laptop(10,20);
+    gap: fluid-to-laptop(10,20);
+    @include mobile-above {
+        border: var(--border);
+        border-radius: fluid-to-laptop(10,12);
+    }
+    @include tablet-above {
+        grid-template-columns: repeat(3,1fr);
+    }
+    @include tablet {
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    &__item {
+        display: flex;
+        .advantage-card {
+            flex: 1;
+            &__link {
+                 min-height: var(--action-size);
+                 justify-content: center;
+            }
+            &__details {
+                font-size: fluid-to-laptop(16,18);
+                @include mobile {
+                    font-size: fluid(14,16);
+                }
+            }
+        }
+    }
+}

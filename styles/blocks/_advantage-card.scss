@@ -3,6 +3,7 @@
 .advantage-card{
     display: flex;
     flex-direction: column;
+    --action-size: #{fluid-to-laptop(44, 52)};
     row-gap: fluid-to-laptop(20,30);
     @include laptop {
         row-gap: fluid(15,20);
@@ -15,7 +16,7 @@
             content: '';
             @include abs-y;
             right: 0;
-            @include square(fluid-to-laptop(44,52));
+            @include square(var(--action-size));
             border-radius: 50%;
             background: url('../../icons/arrow-top-right-black.svg') center no-repeat var(--color-accent);
             transition-duration: var(--transition-duration);

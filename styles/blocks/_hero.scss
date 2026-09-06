@@ -114,7 +114,9 @@
                 padding-block: fluid(30,40);
             }
             @include tablet {
-                border-block: var(--border);
+                &:not(:last-child){
+                    border-bottom: var(--border);
+                }
             }
         }
     }

@@ -2,10 +2,15 @@
 
 .border-grid {
     display: grid;
+    --columns: 1;
+    
     @include tablet-above {
         grid-template-columns: repeat(3,1fr);
     }
 
+    &--2-cols-alt {
+        grid-template-columns: repeat(2,1fr);
+    }
 
     &__item {
         padding-block: fluid-to-laptop(60,80);
@@ -16,18 +21,20 @@
 
         @include tablet-above {
 
-            padding-inline: fluid-to-laptop(40,50);
-            
             &:not(:nth-child(3n)){
                 border-right: var(--border);
+                padding-right: fluid-to-laptop(40,50);
             }
-            &:nth-child(3n + 2):nth-child(n + 5)::before {
+            &:not(:nth-child(3n + 1 )){
+                padding-left: fluid-to-laptop(40,50);
+            }
+            &:nth-child(3n-1)::before {
                 content: '';
                 position: absolute;
-                top: 0;
+                bottom: 0;
                 left: calc(50% - 50vw);
                 right: calc(50% - 50vw);
-                border-top: var(--border);
+                border-bottom: var(--border);
             }
         }
         @include mobile {

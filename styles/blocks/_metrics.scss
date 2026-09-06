@@ -18,7 +18,8 @@
             border-right: var(--border);
         }
         @include laptop {
-            padding: fluid(30,20);
+            padding: fluid(20,30);
+            justify-content: start;
             &:first-child {
                 padding-left: 0;
             }

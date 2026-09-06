@@ -11,9 +11,7 @@
     &__star {
         --size: #{rem(24)};
         @include square(var(--size));
-        background-image: url('/icons/star.svg');
-        background-repeat: no-repeat;
-        background-size: cover;
+        background: url('/icons/star.svg') center/contain no-repeat;
         &.is-active {
             background-image: url('/icons/star-yellow.svg');
         }
