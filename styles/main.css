@@ -1614,6 +1614,33 @@ h6, .h6 {
   }
 }
 
+.hero-alt {
+  padding-top: clamp(5rem, -4.375rem + 10.4166666667vw, 8.125rem);
+  padding-bottom: clamp(6.25rem, -3.125rem + 10.4166666667vw, 9.375rem);
+}
+.hero-alt__header-inner {
+  position: relative;
+}
+@media (width > 47.99875rem) {
+  .hero-alt__title, .hero-alt__description {
+    display: inline;
+  }
+  .hero-alt__description {
+    position: absolute;
+    top: 60%;
+    left: 24%;
+    max-width: 65%;
+  }
+}
+@media (width <= 47.99875rem) {
+  .hero-alt {
+    padding-block: 2.5rem;
+  }
+  .hero-alt__title:not(:last-child) {
+    margin-bottom: 0.875rem;
+  }
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
