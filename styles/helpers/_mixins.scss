@@ -1,3 +1,4 @@
+@use './functions' as *;
 
 @mixin hide {
     opacity: 0;
@@ -53,6 +54,28 @@
 @mixin square($size){
     width: $size;
     height: $size;
+}
+
+@mixin extended-click-area($width: 44, $height: $width) {
+  position: relative;
+
+  &::before {
+    content: '';
+    @include abs-center;
+    width: rem($width);
+    height: rem($height);
+  }
+}
+
+@mixin extended-click-area-padding($padding-block, $padding-inline: $padding-block) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block: calc(0px - #{$padding-block});
+    inset-inline: calc(0px - #{$padding-inline});
+  }
 }
 
 @mixin visually-hidden {

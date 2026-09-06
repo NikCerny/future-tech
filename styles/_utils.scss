@@ -11,12 +11,7 @@
 }
 
 .extended-click-area {
-  position: relative;
-  &::before {
-    content: '';
-    @include abs-center;
-    @include square(rem(44));
-  }
+  @include extended-click-area(44,44);
 }
 
 .hidden-mobile {
