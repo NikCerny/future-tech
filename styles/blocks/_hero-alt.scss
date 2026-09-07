@@ -14,17 +14,15 @@
 
     @include mobile-above {
         &__title,
-        &__description {
+        &__description,
+        &__hidden-block {
             display: inline;
         }
         &__description {
             position: absolute;
             top: 60%;
             max-width: 65%;
-            left: 20%;
-            @include tablet {
-                left: 24%;
-            }
+            margin-left: rem(60);
         }
     }
     

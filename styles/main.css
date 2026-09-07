@@ -1627,19 +1627,14 @@ h6, .h6 {
   }
 }
 @media (width > 47.99875rem) {
-  .hero-alt__title, .hero-alt__description {
+  .hero-alt__title, .hero-alt__description, .hero-alt__hidden-block {
     display: inline;
   }
   .hero-alt__description {
     position: absolute;
     top: 60%;
     max-width: 65%;
-    left: 20%;
-  }
-}
-@media (width > 47.99875rem) and (width <= 63.99875rem) {
-  .hero-alt__description {
-    left: 24%;
+    margin-left: 3.75rem;
   }
 }
 @media (width <= 47.99875rem) {
