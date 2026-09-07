@@ -1,0 +1,13 @@
+@use '../helpers/' as *;
+
+.news {
+
+    &__list {
+        display: grid;
+        @include tablet-above {
+            grid-template-columns: repeat(3,1fr);
+        }
+        gap: rem(30);
+    }
+
+}

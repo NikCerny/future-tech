@@ -1,12 +1,14 @@
 @use '../helpers/' as *;
 
 .hero-alt {
-    padding-top: fluid-to-laptop(80,130);
-    padding-bottom: fluid-to-laptop(100,150);
-
     &__header {
+        padding-top: fluid-to-laptop(80,130);
+        padding-bottom: fluid-to-laptop(100,150);
         &-inner {
-            position: relative;;
+            position: relative;
+        }
+        @include mobile {
+            padding-block: rem(40);
         }
     }
 
@@ -18,16 +20,27 @@
         &__description {
             position: absolute;
             top: 60%;
-            left: 24%;
             max-width: 65%;
+            left: 20%;
+            @include tablet {
+                left: 24%;
+            }
         }
     }
     
     @include mobile {
-        padding-block: rem(40);
         &__title {
             &:not(:last-child){
                 margin-bottom: rem(14);
+            }
+        }
+    }
+
+    & .list {
+        &__item {
+            padding-block: fluid-to-laptop(60,80);
+            @include mobile {
+                padding-block: fluid(40,60);
             }
         }
     }

@@ -1,0 +1,25 @@
+@use '../helpers/' as *;
+
+.summary {
+    &__list {
+        display: flex;
+        column-gap: fluid-to-laptop(30,50);
+        @include mobile {
+            column-gap: fluid(20,30);
+        }
+    }
+
+    &__value {
+        color: var(--color-white);
+    }
+
+    &__key {
+        color: var(--color-gray-60);
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        row-gap: fluid-to-laptop(2,4);
+    }
+}

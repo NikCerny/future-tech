@@ -1,0 +1,143 @@
+@use '../helpers/' as *;
+
+.news-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: fluid-to-laptop(40,80);
+    @include laptop {
+        gap: fluid(30,40);
+    }
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+
+    &__title {
+        font-size: fluid-to-laptop(24,32);
+        font-weight: 600;
+        font-family: var(--font-family-base);
+        &:not(:last-child){
+            margin-bottom: fluid-to-laptop(14,30);
+        }
+        @include laptop {
+            font-size: fluid(20,24);
+            &:not(:last-child){
+                margin-bottom: fluid(6,14);
+            }
+        }
+    }
+
+    &__description {
+        font-size: fluid-to-laptop(18,20);
+        color: var(--color-gray-60);
+        &:not(:last-child){
+            margin-bottom: fluid-to-laptop(40,50);
+        }
+        @include laptop {
+            font-size: fluid(16,18);
+            &:not(:last-child){
+                margin-bottom: fluid(20,40);
+            }
+        }
+    }
+
+    &__summary {
+        &:not(:last-child){
+            margin-bottom: fluid-to-laptop(40,50);
+        }
+        @include laptop {
+            &:not(:last-child){
+                margin-bottom: fluid-to-laptop(20,40);
+            }
+        }
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        @include mobile {
+            align-items: center;
+        }
+    }
+
+    &__acrions {
+        display: flex;
+        column-gap: fluid-to-laptop(8,10);
+    }
+
+    &__image {
+        border-radius: fluid-to-laptop(10,12);
+        object-fit: cover;
+        width: rem(515);
+        height: fluid-to-laptop(325,427);
+        @include laptop {
+            width: fluid(358,515);
+            height: fluid(213,325);
+        }
+    }
+
+    &__link {
+        @include mobile {
+            padding-inline: rem(35);
+        }
+    }
+
+    &--grid-alt {
+        @include tablet-above {
+            grid-template-columns: minmax(0,auto);
+            grid-template-rows: auto;
+        }
+        @include tablet {
+            grid-template-columns: auto 1fr;
+            grid-template-areas: 'image body'
+                                 'image controls';
+        }
+        @include mobile {
+            grid-template-columns: 1fr;
+            grid-template-areas: none;
+        }
+        row-gap: fluid-to-laptop(16,20);
+        
+
+        .news-card {
+            &__body {
+                @include tablet {
+                    grid-area: body;
+                }
+                @include mobile {
+                    grid-area:auto;
+                }
+            }
+            &__title {
+                &:not(:last-child){
+                    margin-bottom: fluid-to-laptop(4,10);
+                    font-size: fluid-to-laptop(16,20);
+                }
+            }
+            &__image {
+                width: fluid-to-laptop(406,512);
+                height: fluid-to-laptop(185, 222);
+                @include tablet {
+                    grid-area: image;
+                }
+                @include mobile {
+                    grid-area:auto;
+                }
+            }
+            &__controls {
+                align-items: center;
+                column-gap: rem(50);
+                @include tablet {
+                    grid-area: controls;
+                }
+                @include mobile {
+                    grid-area:auto;
+                }
+            }
+            &__link {
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
