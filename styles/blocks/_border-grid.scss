@@ -3,44 +3,81 @@
 .border-grid {
     display: grid;
     --columns: 1;
-    
-    @include tablet-above {
-        grid-template-columns: repeat(3,1fr);
-    }
-
-    &--2-cols-alt {
-        grid-template-columns: repeat(2,1fr);
-    }
+    grid-template-columns: repeat(var(--columns),1fr);
 
     &__item {
-        padding-block: fluid-to-laptop(60,80);
         position: relative;
+        padding-block: fluid-to-laptop(60,80);
         @include laptop {
-            padding-block: fluid-to-laptop(40,60);
+            padding-block: fluid(40,60);
         }
-
-        @include tablet-above {
-
-            &:not(:nth-child(3n)){
-                border-right: var(--border);
-                padding-right: fluid-to-laptop(40,50);
-            }
-            &:not(:nth-child(3n + 1 )){
-                padding-left: fluid-to-laptop(40,50);
-            }
-            &:nth-child(3n-1)::before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: calc(50% - 50vw);
-                right: calc(50% - 50vw);
-                border-bottom: var(--border);
-            }
-        }
-        @include mobile {
+        @include tablet {
             &:not(:last-child){
                 border-bottom: var(--border);
             }
         }
+    }
+    
+    &--3-cols {
+
+        @include tablet-above {
+            --columns: 3;
+        }
+        .border-grid {
+
+            &__item {
+
+                @include tablet-above {
+
+                    &:not(:nth-child(3n)){
+                        border-right: var(--border);
+                        padding-right: fluid-to-laptop(40,50);
+                    }
+                    &:not(:nth-child(3n + 1 )){
+                        padding-left: fluid-to-laptop(40,50);
+                    }
+                    &:nth-child(3n-1):not(:last-child)::before {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: calc(50% - 50vw);
+                        right: calc(50% - 50vw);
+                        border-bottom: var(--border);
+                    }
+                }
+            }
+        }
+     
+    }
+   
+
+    &--2-cols {
+        @include tablet-above {
+            --columns: 2;
+        }
+        @include tablet-above {
+            .border-grid__item {
+                &:not(:nth-child(2n)){
+                    border-right: var(--border);
+                    padding-right: fluid-to-laptop(50,80);
+                }
+                &:not(:nth-child(2n + 1 )){
+                            padding-left: fluid-to-laptop(50,80);
+                }
+                &:nth-child(2n + 2):not(:last-child)::before {
+                    content: '';
+                        position: absolute;
+                        bottom: 0;
+                        right: calc((100vw - var(--container-width)) / 2 * -1 );
+                        width: 100vw;
+                        border-bottom: var(--border);
+                        @media (width < rem(1280)), (width > rem(1440)) and (width < rem(1600)) { // container laptop width, laptop width, container desktop width
+                            right: rem(-16); // container padding 
+                        }
+       
+                }
+            }            
+        }
+
     }
 }
