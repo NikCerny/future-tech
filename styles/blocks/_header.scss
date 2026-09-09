@@ -33,7 +33,6 @@
         @include mobile {
             position: fixed;
             inset: 0;
-            top: 15%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -69,16 +68,21 @@
         }
         &-list{
             display: flex;
-            align-items: center;
             column-gap: 40px;
 
             @include mobile {
                 flex-direction: column;
                 row-gap: 2rem;
+                align-items: center;
             }
-
         }
+
+        &-item {  
+             display: flex;
+        }
+
         &-link {
+           align-items: center;
             &.is-active {
                 color: white;
                 font-weight: 500;
@@ -88,15 +92,7 @@
                 border-radius: fluid-to-laptop(6,10);
                 background-color: var(--color-dark);
             }
-            &:not(.is-active){
-                @include extended-click-area-padding(
-                    fluid-to-laptop(10, 14),
-                    fluid-to-laptop(18, 24)
-                );
-            }
         }
-
-
     }
 
     &__button {
