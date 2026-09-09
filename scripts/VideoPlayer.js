@@ -37,7 +37,7 @@ class VideoPlayer {
   };
 
   onVideoPause = () => {
-    if (this.videoElem.seeking) {
+    if (this.videoElem.seeking || this.isFullscreen()) {
       return;
     }
     this.videoElem.controls = false;
@@ -45,11 +45,15 @@ class VideoPlayer {
     this.rootElem.classList.remove(this.stateClasses.isPlaying);
   };
 
-  onVideoEnded = () => {
-    this.videoElem.controls = false;
-    this.panelElem.classList.add(this.stateClasses.isActive);
-    this.rootElem.classList.remove(this.stateClasses.isPlaying);
-    this.videoElem.load();
+  // onVideoEnded = () => {
+  //   this.videoElem.controls = false;
+  //   this.panelElem.classList.add(this.stateClasses.isActive);
+  //   this.rootElem.classList.remove(this.stateClasses.isPlaying);
+  //   this.videoElem.load();
+  // };
+
+  isFullscreen = () => {
+    return document.fullscreenElement === this.videoElem;
   };
 }
 
