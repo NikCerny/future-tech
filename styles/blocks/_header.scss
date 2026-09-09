@@ -33,6 +33,7 @@
         @include mobile {
             position: fixed;
             inset: 0;
+            top: 15%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -68,21 +69,17 @@
         }
         &-list{
             display: flex;
+            align-items: center;
             column-gap: 40px;
 
             @include mobile {
                 flex-direction: column;
                 row-gap: 2rem;
-                align-items: center;
             }
-        }
 
-        &-item {  
-             display: flex;
         }
-
         &-link {
-           align-items: center;
+            padding-block: fluid-to-laptop(10, 14);
             &.is-active {
                 color: white;
                 font-weight: 500;
