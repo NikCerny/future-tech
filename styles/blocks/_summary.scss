@@ -1,6 +1,31 @@
 @use '../helpers/' as *;
 
 .summary {
+
+    &--2-cols {
+        .summary {
+
+            &__list {
+                display: grid;
+                grid-template-columns: repeat(2,1fr);
+                gap: fluid-to-laptop(20,30);
+
+            }
+            
+            &__item {
+                &--wide {
+                    grid-column: -1 / 1;
+                    margin-top: rem(20);
+                    row-gap: fluid-to-laptop(16,10);
+                   
+                    @include mobile {
+                        margin-top: rem(10);
+                    }
+                }
+            }
+
+        }
+    }
     &__list {
         display: flex;
         column-gap: fluid-to-laptop(30,50);

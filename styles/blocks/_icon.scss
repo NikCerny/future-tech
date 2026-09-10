@@ -31,4 +31,14 @@
             }
         }
     }
+
+    &--gray-arrow-down {
+        &::after {
+            --size: #{rem(24)};
+            background-image: url('/icons/arrow-down.svg');
+            @include laptop {
+                --size: #{rem(20)};
+            }
+        }
+    }
 }

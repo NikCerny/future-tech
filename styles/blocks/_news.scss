@@ -10,4 +10,17 @@
         gap: rem(30);
     }
 
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        column-gap: rem(80);
+        align-items: center;
+        margin-bottom: fluid-to-laptop(40,60);
+   
+    }
+
+    &__title {
+        font-weight: 500;
+        color: var(--color-gray-80);
+    }
 }

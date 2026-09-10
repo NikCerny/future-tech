@@ -40,6 +40,10 @@
 @use 'blocks/news';
 @use 'blocks/video-card';
 @use 'blocks/video-player';
+@use 'blocks/blog';
+@use 'blocks/table-of-contents';
+@use 'blocks/expandable-content';
+
 
 
 @use 'utils'; // important AS LAST for style weight

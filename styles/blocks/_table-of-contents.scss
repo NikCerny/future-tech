@@ -1,0 +1,20 @@
+@use '../helpers/' as *;
+
+.table-of-contents {
+    
+
+
+    &__list {
+        display: grid;
+        row-gap: fluid-to-laptop(16,20);
+        padding: rem(20);
+        border-radius: fluid-to-laptop(10,12);
+        background-color: var(--color-dark-10);
+        color: var(--color-white);
+    }
+
+    &__item {
+        list-style-type: disc;
+        margin-left: 1.5em;
+    }
+}
