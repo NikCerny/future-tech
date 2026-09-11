@@ -50,6 +50,17 @@ class ExpandableContent {
       onComplete?.();
     };
   };
+
+  expandImmediately = (onComplete) => {
+    if (this.rootElem.classList.contains(this.stateClasses.isExpanded)) {
+      onComplete?.();
+      return;
+    }
+
+    this.rootElem.classList.add(this.stateClasses.isExpanded);
+
+    onComplete?.();
+  };
 }
 
 class ExpandableContentCollection {
@@ -57,58 +68,18 @@ class ExpandableContentCollection {
     this.expandableContents = new Map();
 
     this.init();
-    this.bindAnchorEvents();
   }
 
   init() {
     document.querySelectorAll(rootSelector).forEach((elem) => {
-      const expandableContent = new ExpandableContent(elem);
-
-      this.expandableContents.set(elem, expandableContent);
+      this.expandableContents.set(elem, new ExpandableContent(elem));
     });
   }
 
-  bindAnchorEvents() {
-    document.addEventListener("click", this.onAnchorClick);
+  getByTarget(targetElem) {
+    const rootElem = targetElem.closest(rootSelector);
+
+    return rootElem ? this.expandableContents.get(rootElem) : null;
   }
-
-  onAnchorClick = (event) => {
-    const anchor = event.target.closest('a[href^="#"]');
-
-    if (!anchor) {
-      return;
-    }
-
-    const targetId = anchor.getAttribute("href");
-    const targetElem = document.querySelector(targetId);
-
-    if (!targetElem) {
-      return;
-    }
-
-    const expandableRoot = targetElem.closest(rootSelector);
-
-    if (!expandableRoot) {
-      return;
-    }
-
-    const expandableContent = this.expandableContents.get(expandableRoot);
-
-    if (!expandableContent) {
-      return;
-    }
-
-    event.preventDefault();
-
-    expandableContent.expand(() => {
-      targetElem.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-
-      history.pushState(null, "", targetId);
-    });
-  };
 }
-
 export default ExpandableContentCollection;
