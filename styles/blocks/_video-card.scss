@@ -3,7 +3,9 @@
 .video-card {
     display: flex;
     flex-direction: column;
+    align-items: start;
     row-gap: fluid-to-laptop(20,30);
+    height: 100%;
 
     &__title {
         font-family: var(--font-family-base);
@@ -16,6 +18,7 @@
     &__body {
         display: flex;
         flex-direction: column;
+        flex-grow: 1;
         row-gap: fluid-to-laptop(6,10);
         @include laptop {
             row-gap: fluid(4,6);

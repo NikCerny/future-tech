@@ -42,6 +42,11 @@
     }
 
     &__summary {
+        .summary {
+            &__list {
+                flex-direction: row;
+            }
+        }
         &:not(:last-child){
             margin-bottom: fluid-to-laptop(40,50);
         }

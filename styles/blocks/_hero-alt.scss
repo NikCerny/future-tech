@@ -4,6 +4,7 @@
     &__header {
         padding-top: fluid-to-laptop(80,130);
         padding-bottom: fluid-to-laptop(100,150);
+        border-bottom: var(--border);
         &-inner {
             position: relative;
         }
@@ -34,12 +35,13 @@
         }
     }
 
-    & .list {
-        &__item {
-            padding-block: fluid-to-laptop(60,80);
-            @include mobile {
-                padding-block: fluid(40,60);
-            }
+   & .list {
+    &__item:not(.u-padding-block-0) {
+        padding-block: fluid-to-laptop(60, 80);
+
+        @include mobile {
+            padding-block: fluid(40, 60);
         }
     }
+}
 }

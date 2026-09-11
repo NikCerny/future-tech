@@ -27,6 +27,12 @@
         @include laptop {
             height: fluid(210,330);
         }
+        &--small {
+            height: fluid-to-laptop(245,290);
+            @include laptop {
+                height: fluid(210,245);
+            }
+        }
     }
 
 
@@ -45,6 +51,9 @@
             @include hide;
         }
 
+        &--center {
+            @include flex-center;
+        }
  
     }
 

@@ -22,19 +22,25 @@
 
         @include tablet-above {
             --columns: 3;
+            --columnGap: #{fluid-to-laptop(80,100)};
+            column-gap: var(--columnGap);
         }
         .border-grid {
 
             &__item {
 
                 @include tablet-above {
-
-                    &:not(:nth-child(3n)){
-                        border-right: var(--border);
-                        padding-right: fluid-to-laptop(40,50);
-                    }
-                    &:not(:nth-child(3n + 1 )){
-                        padding-left: fluid-to-laptop(40,50);
+                    
+                    &:nth-child(3n-1), &:nth-child(3n-2) {
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: calc(100% + var(--columnGap) / 2);
+                            width: rem(1);
+                            height: 100%;
+                            background-color: var(--color-dark-15);
+                        }
                     }
                     &:nth-child(3n-1):not(:last-child)::before {
                         content: '';

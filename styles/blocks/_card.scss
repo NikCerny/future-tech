@@ -70,6 +70,35 @@
                 font-size: fluid(14,16);
             }
         }
+        
+        &-info {
+            &:has(.rating-view){
+                display: grid;
+                grid-template-columns: 1fr auto;
+                row-gap: fluid-to-laptop(24,30);
+            }
+            .card__preview {
+                &-host {
+                    grid-column: -1 / 1;
+                }
+                &-title {
+                    margin-bottom: 0;
+                }
+                &-link {
+                    background-color: var(--color-dark);
+                }
+                
+            }    
+        }
+
+        &-host {
+            display: flex;
+            justify-content: space-between;
+            &.tile {
+                padding-block: fluid-to-laptop(24,30);
+            }
+        }
+        
 
     }
     &__grid {
@@ -91,6 +120,13 @@
             column-gap: fluid-to-laptop(16,20);
             @include laptop {
                 row-gap: fluid(16,24);
+            }
+        }
+
+        &--3-cols {
+            @include mobile-above {
+                grid-template-columns: repeat(3, 1fr);
+                align-items: center;
             }
         }
     }
@@ -156,6 +192,10 @@
             @include laptop {
                 height: fluid(169,275);
             }
+        }
+
+        &-summary {
+            display: contents;
         }
 
  

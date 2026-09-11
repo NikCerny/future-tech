@@ -28,9 +28,13 @@
     }
     &__list {
         display: flex;
+        flex-direction: column;
         column-gap: fluid-to-laptop(30,50);
         @include mobile {
             column-gap: fluid(20,30);
+        }
+        &.tile {
+                padding-block: fluid-to-laptop(24,30);
         }
     }
 
