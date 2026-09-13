@@ -871,9 +871,12 @@ h6, .h6 {
   }
 }
 
+.metrics {
+  --gridCols: 3;
+}
 .metrics__list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--gridCols), 1fr);
 }
 .metrics__item {
   display: flex;
@@ -887,6 +890,9 @@ h6, .h6 {
 }
 .metrics__item:not(:last-child) {
   border-right: var(--border);
+}
+.metrics__item:last-child {
+  padding-right: 0;
 }
 @media (width <= 90.06125rem) {
   .metrics__item {
@@ -903,6 +909,63 @@ h6, .h6 {
 }
 .metrics__plus {
   color: var(--color-accent);
+}
+.metrics--cols-4 {
+  --gridCols: 4;
+}
+@media (width <= 63.99875rem) {
+  .metrics--cols-4 {
+    --gridCols: 2;
+  }
+  .metrics--cols-4.metrics {
+    padding-inline: 0;
+  }
+}
+.metrics--cols-4 .metrics__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: clamp(3.125rem, -2.5rem + 6.25vw, 5rem);
+}
+@media (width > 90.06125rem) {
+  .metrics--cols-4 .metrics__item:not(:last-child) {
+    padding-right: clamp(3.125rem, -2.5rem + 6.25vw, 5rem);
+  }
+  .metrics--cols-4 .metrics__item:not(:first-child) {
+    padding-left: clamp(3.125rem, -2.5rem + 6.25vw, 5rem);
+  }
+}
+@media (width <= 90.06125rem) {
+  .metrics--cols-4 .metrics__item {
+    border-bottom: var(--border);
+    padding-block: clamp(1.25rem, 0.5535714286rem + 2.8571428571vw, 3.125rem);
+  }
+  .metrics--cols-4 .metrics__item:not(:nth-child(even)) {
+    padding-right: clamp(1.25rem, 0.5535714286rem + 2.8571428571vw, 3.125rem);
+    padding-left: var(--container-padding-x);
+  }
+  .metrics--cols-4 .metrics__item:not(:nth-child(odd)) {
+    padding-left: clamp(1.25rem, 0.5535714286rem + 2.8571428571vw, 3.125rem);
+    padding-right: var(--container-padding-x);
+  }
+}
+@media (width <= 90.06125rem) and (width <= 63.99875rem) {
+  .metrics--cols-4 .metrics__item:not(:nth-child(odd)) {
+    border-right: none;
+  }
+}
+@media (width <= 63.99875rem) {
+  .metrics--cols-4 .metrics__item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+}
+.metrics--cols-4 .metrics__value {
+  font-size: clamp(2.5rem, -1.25rem + 4.1666666667vw, 3.75rem);
+}
+@media (width <= 90.06125rem) {
+  .metrics--cols-4 .metrics__value {
+    font-size: clamp(1.5rem, 1.1285714286rem + 1.5238095238vw, 2.5rem);
+  }
 }
 
 .team {

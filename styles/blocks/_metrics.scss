@@ -1,9 +1,10 @@
 @use '../helpers/' as *;
 
 .metrics {
+    --gridCols: 3;
     &__list {
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(var(--gridCols),1fr);
     }
     &__item {
         display: flex;
@@ -16,6 +17,9 @@
         }
         &:not(:last-child){
             border-right: var(--border);
+        }
+        &:last-child {
+            padding-right: 0;
         }
         @include laptop {
             padding: fluid(20,30);
@@ -32,5 +36,60 @@
 
     &__plus {
         color: var(--color-accent);
+    }
+
+
+    &--cols-4 {
+       --gridCols: 4;
+       
+       @include tablet {
+        --gridCols: 2;
+        &.metrics {
+            padding-inline: 0;
+        }
+       }
+       .metrics {
+        &__item {
+        
+            @include flex-center;
+            padding-block: fluid-to-laptop(50,80);
+            @include laptop-above {
+                &:not(:last-child){
+                    padding-right: fluid-to-laptop(50,80);
+                }
+                &:not(:first-child){
+                    padding-left: fluid-to-laptop(50,80);
+                }
+            }
+
+
+            @include laptop {
+                border-bottom: var(--border);
+                padding-block: fluid(20,50);
+                &:not(:nth-child(even)){
+                    padding-right: fluid(20,50);
+                    padding-left: var(--container-padding-x);
+                }
+                &:not(:nth-child(odd)){
+                    padding-left: fluid(20,50);
+                    padding-right: var(--container-padding-x);
+                    @include tablet {
+                        border-right: none;
+                    }
+                }
+            }
+            @include tablet {
+                &:nth-last-child(-n + 2){
+                    border-bottom: none;
+                }
+            }
+        }
+        &__value {
+            font-size: fluid-to-laptop(40,60);
+            @include laptop {
+                font-size: fluid(24,40);
+            }
+        }
+       } 
     }
 }
