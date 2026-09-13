@@ -9,14 +9,16 @@
             @include laptop {
                 padding-block: fluid(40,80);
             }
-            &:has(.section__link){
+            &:has(.section__link), &:has(.section__actions){
                 display: grid;
                 grid-template-columns: 1fr auto;
                 align-items: center;
+               
                 @include mobile {
-                    grid-template-columns: 1fr;
+                    grid-template-columns: minmax(0,1fr);
                     row-gap: rem(30);
                 }
+                
             }
             &:has(.section__logo) {
                 display: flex;
@@ -29,6 +31,7 @@
                   align-items: flex-start;
                 }
             }
+    
         }
 
         &-info {
@@ -57,6 +60,7 @@
     &__actions {
         display: flex;
         flex-direction: column;
+
     }
 
     &__title {
@@ -88,5 +92,7 @@
             margin-bottom: rem(20);
         }
     }
+
+   
 
 }

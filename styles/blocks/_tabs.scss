@@ -17,7 +17,31 @@
             padding-block: fluid(20,40);
         }
         @include tablet {
-            width: max-content;
+            width: fit-content;
+        }
+
+        &--3-buttons {
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            column-gap: rem(10);
+            padding: rem(10);
+            background-color: var(--color-dark);
+            color: var(--color-gray-60);
+            border: var(--border);
+            border-radius: rem(10);
+           
+            .tabs {
+                &__button {
+                    padding-block: fluid-to-laptop(14,18);
+                    padding-inline: fluid-to-laptop(24,38);
+                    &.is-active {
+                        background-color: var(--color-dark-15);
+                        font-weight: 400;
+                    }
+                    @include laptop {
+                        padding-inline: fluid(13,24);
+                    }
+                }
+            }
         }
     }
     &__button {

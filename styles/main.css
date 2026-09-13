@@ -696,14 +696,14 @@ h6, .h6 {
     padding-block: clamp(2.5rem, 1.5714285714rem + 3.8095238095vw, 5rem);
   }
 }
-.section__header-inner:has(.section__link) {
+.section__header-inner:has(.section__link), .section__header-inner:has(.section__actions) {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
 }
 @media (width <= 47.99875rem) {
-  .section__header-inner:has(.section__link) {
-    grid-template-columns: 1fr;
+  .section__header-inner:has(.section__link), .section__header-inner:has(.section__actions) {
+    grid-template-columns: minmax(0, 1fr);
     row-gap: 1.875rem;
   }
 }
@@ -1303,6 +1303,22 @@ h6, .h6 {
 .card__cell--wide {
   grid-column: 1/-1;
 }
+.card__cell--2-cols {
+  display: grid;
+  column-gap: clamp(1.25rem, -0.625rem + 2.0833333333vw, 1.875rem);
+  row-gap: clamp(0.625rem, -0.125rem + 0.8333333333vw, 0.875rem);
+}
+@media (width > 63.99875rem) {
+  .card__cell--2-cols {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "content link" "description link";
+    align-items: center;
+    display: grid;
+  }
+}
+.card__cell--2-cols .card__cell-title {
+  margin-bottom: 0;
+}
 .card__cell-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1318,14 +1334,23 @@ h6, .h6 {
     padding: clamp(1.25rem, 1.1571428571rem + 0.380952381vw, 1.5rem);
   }
 }
-.card__cell-subtitle {
-  grid-area: content;
+@media (width > 63.99875rem) {
+  .card__cell-subtitle {
+    grid-area: content;
+  }
 }
-.card__cell-description {
-  grid-area: description;
+@media (width > 63.99875rem) {
+  .card__cell-description {
+    grid-area: description;
+  }
+}
+@media (width > 63.99875rem) {
+  .card__cell-link {
+    grid-area: link;
+  }
 }
 .card__cell-link {
-  grid-area: link;
+  width: 100%;
 }
 .card__cell-image {
   border-radius: clamp(0.625rem, 0.25rem + 0.4166666667vw, 0.75rem);
@@ -1338,8 +1363,23 @@ h6, .h6 {
     height: clamp(10.5625rem, 8.1017857143rem + 10.0952380952vw, 17.1875rem);
   }
 }
-.card__cell-summary {
-  display: contents;
+@media (width > 47.99875rem) {
+  .card__cell-summary {
+    display: contents;
+  }
+}
+@media (width <= 47.99875rem) {
+  .card__cell-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+  }
+  .card__cell-summary .summary__list {
+    padding: 1.25rem;
+  }
+  .card__cell-summary .summary__list:last-child {
+    grid-column: 1/-1;
+  }
 }
 
 .tabs__header {
@@ -1363,7 +1403,29 @@ h6, .h6 {
 }
 @media (width <= 63.99875rem) {
   .tabs__buttons {
-    width: max-content;
+    width: fit-content;
+  }
+}
+.tabs__buttons--3-buttons {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 0.625rem;
+  padding: 0.625rem;
+  background-color: var(--color-dark);
+  color: var(--color-gray-60);
+  border: var(--border);
+  border-radius: 0.625rem;
+}
+.tabs__buttons--3-buttons .tabs__button {
+  padding-block: clamp(0.875rem, 0.125rem + 0.8333333333vw, 1.125rem);
+  padding-inline: clamp(1.5rem, -1.125rem + 2.9166666667vw, 2.375rem);
+}
+.tabs__buttons--3-buttons .tabs__button.is-active {
+  background-color: var(--color-dark-15);
+  font-weight: 400;
+}
+@media (width <= 90.06125rem) {
+  .tabs__buttons--3-buttons .tabs__button {
+    padding-inline: clamp(0.8125rem, 0.5571428571rem + 1.0476190476vw, 1.5rem);
   }
 }
 .tabs__button {
@@ -1901,7 +1963,7 @@ h6, .h6 {
   font-size: clamp(1rem, 0.25rem + 0.8333333333vw, 1.25rem);
 }
 .news-card--grid-alt .news-card__image {
-  width: clamp(25.375rem, 5.5rem + 22.0833333333vw, 32rem);
+  width: 100%;
   height: clamp(11.5625rem, 4.625rem + 7.7083333333vw, 13.875rem);
 }
 @media (width <= 63.99875rem) {
@@ -2334,6 +2396,52 @@ h6, .h6 {
   transform: translateX(-50%);
   bottom: 3.4375rem;
   z-index: 10;
+}
+
+.report-card {
+  display: grid;
+  gap: clamp(1.5rem, 0.375rem + 1.25vw, 1.875rem);
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+@media (width <= 90.06125rem) {
+  .report-card {
+    row-gap: clamp(1.25rem, 1.1571428571rem + 0.380952381vw, 1.5rem);
+  }
+}
+@media (width <= 63.99875rem) {
+  .report-card {
+    grid-template-columns: auto 1fr;
+  }
+}
+@media (width <= 47.99875rem) {
+  .report-card {
+    grid-template-columns: auto;
+  }
+}
+.report-card__image {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+@media (width <= 90.06125rem) {
+  .report-card__image {
+    height: clamp(13.9375rem, 12.3821428571rem + 6.380952381vw, 18.125rem);
+  }
+}
+.report-card__main {
+  display: grid;
+  row-gap: clamp(0.625rem, -0.125rem + 0.8333333333vw, 0.875rem);
+}
+@media (width <= 63.99875rem) {
+  .report-card__main {
+    align-content: space-between;
+  }
+}
+.report-card__actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: clamp(0.625rem, -1.25rem + 2.0833333333vw, 1.25rem);
 }
 
 .visually-hidden {

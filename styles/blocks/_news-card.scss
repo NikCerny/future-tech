@@ -120,7 +120,7 @@
                 }
             }
             &__image {
-                width: fluid-to-laptop(406,512);
+                width: 100%;
                 height: fluid-to-laptop(185, 222);
                 @include tablet {
                     grid-area: image;
