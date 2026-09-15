@@ -9,7 +9,7 @@ $base-font-size: 16;
   }
 }
 
-@function fluid($min: 16, $max: 48) {
+@function fluid($min: $base-font-size, $max: 48) {
   $maxViewportWidth: 1440;
   $minViewportWidth: 390;
   
@@ -28,7 +28,7 @@ $base-font-size: 16;
   );
 }
 
-@function fluid-to-laptop($min: 16, $max: 48) {
+@function fluid-to-laptop($min: $base-font-size, $max: 48) {
   $maxViewportWidth: 1920;
   $minViewportWidth: 1440;
   

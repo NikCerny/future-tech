@@ -33,10 +33,9 @@
         @include tablet-above {
             align-self: center;
             padding-right: fluid-to-laptop(60,80);
-        }
-        @include tablet {
             padding-block: rem(50);
         }
+
 
         &-main {
             display: flex;
@@ -49,10 +48,14 @@
         }
 
         &-title {
-            margin-bottom: fluid-to-laptop(10,16);
+            &:not(:last-child){
+                margin-bottom: fluid-to-laptop(10,16);
+            }
             font-weight: 600;
             @include laptop {
-                margin-bottom: fluid(6,10);
+                &:not(:last-child){
+                    margin-bottom: fluid(6,10);
+                }
             }
 
         }
@@ -76,19 +79,26 @@
                 display: grid;
                 grid-template-columns: 1fr auto;
                 row-gap: fluid-to-laptop(24,30);
-            }
-            .card__preview {
-                &-host {
-                    grid-column: -1 / 1;
-                }
-                &-title {
-                    margin-bottom: 0;
-                }
-                &-link {
-                    background-color: var(--color-dark);
-                }
+                 .card__preview {
+                    &-host {
+                        grid-column: -1 / 1;
+                    }
+                    &-title {
+                        margin-bottom: 0;
+                    }
+                    &-link {
+                        background-color: var(--color-dark);
+                    }
                 
-            }    
+                 }
+            }
+             
+        }
+
+        &-link {
+            &--short {
+                align-self: flex-start;
+            }
         }
 
         &-host {
