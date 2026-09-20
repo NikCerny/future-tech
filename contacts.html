@@ -86,7 +86,7 @@
                     ></a
                   >
                   <a
-                    href="tel:+1123456-7890"
+                    href="tel:+11234567890"
                     class="contacts-card__link button button--dark-gray"
                     ><span class="icon icon--yellow-arrow"
                       >+1 (123) 456-7890</span
@@ -107,7 +107,7 @@
                     ></a
                   >
                   <a
-                    href="tel:+1123456-7890"
+                    href="tel:+11234567890"
                     class="contacts-card__link button button--dark-gray"
                     ><span class="icon icon--yellow-arrow"
                       >+1 (123) 456-7890</span
@@ -305,7 +305,7 @@
                       >
                       <textarea
                         type="text"
-                        class="field__control"
+                        class="field__control field__control--textarea"
                         id="message"
                         placeholder="Enter your message"
                         required
@@ -314,13 +314,17 @@
                     <div class="form-feedback__cell form-feedback__cell--wide">
                       <div class="form-feedback__actions">
                         <div class="form-feedback__agreement">
-                          <label for="" class="checkbox"
+                          <label class="checkbox"
                             ><input
                               type="checkbox"
                               class="checkbox__input required"
                             />
                             <span class="checkbox__label"
-                              >I agree with Terms of Use and Privacy
+                              ><span
+                                class="field__required-star"
+                                aria-hidden="true"
+                                >*</span
+                              > I agree with Terms of Use and Privacy
                               Policy</span
                             >
                           </label>

@@ -27,6 +27,10 @@
     &--dark-gray {
         background-color: var(--color-dark-10);
     }
+
+    &--short {
+        align-self: flex-start;
+    }
     
     @include hover {
         background-color: var(--color-dark-10);

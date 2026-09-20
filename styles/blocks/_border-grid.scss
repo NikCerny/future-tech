@@ -17,13 +17,83 @@
             }
         }
     }
+
+    &--3-cols {
+        @include tablet-above {
+            --columnGap: #{fluid-to-laptop(80,100)};
+            column-gap: var(--columnGap);
+        }
+    }
+
+    &--4-cols {
+        @include laptop-above {
+            --columnGap: #{fluid-to-laptop(80,100)};
+            column-gap: var(--columnGap);
+        }
+    }
+
+    &--4-cols {
+        @include laptop-above {
+            --columns: 4;
+        }
+        @include laptop {
+            --columns: 2;
+        }
+        @include mobile {
+            --columns: 1;
+        }
+        .border-grid {
+            &__item {
+                @include laptop-above {
+                    &:not(:last-child){
+                        border-right: var(--border);
+                    }
+                }
+                @include laptop {
+                    &:nth-child(2n+1){
+                        border-right: var(--border);
+                    }
+                    &:not(:nth-last-child(-n + 2)){
+                        border-bottom: var(--border);
+                    }
+                    padding-inline: var(--container-padding-x);
+                }
+            }
+            // &__item {
+            //     @include mobile-above {
+            //         &:not(:last-child)::after {
+            //             content: '';
+            //             position: absolute;
+            //             left: calc(100% + var(--columnGap) / 2);
+            //             width: rem(1.1);
+            //             height: 100%;
+            //             top: 0;
+            //             background-color: var(--color-dark-15);
+            //         }
+            //     }
+            //     @include mobile {
+            //         &:nth-child(2n+1)::after {
+            //             content: '';
+            //             position: absolute;
+            //             left: calc(100% + var(--columnGap) / 2);
+            //             width: rem(1.1);
+            //             height: 100%;
+            //             top: 0;
+            //             background-color: var(--color-dark-15);
+            //         }
+            //         &:not(:last-child){
+            //             border-bottom: var(--border);
+            //         }
+         
+            //     }
+            // }
+        }
+    }
     
     &--3-cols {
 
         @include tablet-above {
             --columns: 3;
-            --columnGap: #{fluid-to-laptop(80,100)};
-            column-gap: var(--columnGap);
         }
         .border-grid {
 
@@ -37,7 +107,7 @@
                             position: absolute;
                             top: 0;
                             left: calc(100% + var(--columnGap) / 2);
-                            width: rem(1);
+                            width: rem(1.1);
                             height: 100%;
                             background-color: var(--color-dark-15);
                         }

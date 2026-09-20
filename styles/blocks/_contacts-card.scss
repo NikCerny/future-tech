@@ -1,0 +1,38 @@
+@use '../helpers/' as *;
+
+.contacts-card {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-to-laptop(30,50);
+    @include laptop {
+        gap: fluid(20,30);
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        gap: fluid-to-laptop(10,15);
+    }
+
+    &__link {
+        align-self: flex-start;
+    }
+
+    &__socials {
+        .socials__item {
+            @include flex-center;
+            --paddingBlockSocials: #{fluid-to-laptop(14,18)};
+            --paddingInlineSocials: #{fluid-to-laptop(24,30)};
+            padding: var(--paddingBlockSocials) var(--paddingInlineSocials);
+            background-color: var(--color-dark-10);
+            border: var(--border);
+            border-radius: rem(6);
+        }
+        .socials__link {
+            @include extended-click-area-padding(var(--paddingBlockSocials), var(--paddingInlineSocials));
+        }
+        .socials__link svg {
+            @include square(rem(24))
+        }
+    }
+}

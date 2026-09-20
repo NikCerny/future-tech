@@ -1,0 +1,80 @@
+@use '../helpers/' as *;
+
+.accordion {
+
+    --indicator-rotation: 90deg;
+    --indicatorSize: #{rem(16)};
+
+    &[open] {
+        --indicator-rotation: 0deg;
+        .accordion__title {
+            &::before, &::after {
+                background-color: var(--color-white);
+            }
+        }
+        .accordion__content {
+            grid-template-rows: 1fr;
+        }
+    }
+
+    &__summary {
+        cursor: pointer;
+        list-style: none;
+        @include hover {
+            .accordion__title {
+                color: var(--color-accent);
+            }
+        }
+        @include extended-click-area-padding(fluid-to-laptop(24,34));
+    }
+
+    &.tile {
+        padding: fluid-to-laptop(24,34);
+    }
+
+    &__title {
+        transition-duration: var(--transition-duration);
+        padding-right: rem(32);
+        &::before, &::after {
+            content: "";
+            @include abs-y;
+            
+            right: 0;
+            width: var(--indicatorSize);
+            height: rem(2);
+            background-color: var(--color-accent);
+            border-radius: 1rem;
+            
+        }
+        &::after {
+            transform: rotate(var(--indicator-rotation));
+            transition-duration: var(--transition-duration);
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition-duration: 0.3s;
+
+        &-inner {
+            overflow: hidden;
+        }
+        
+        &-body {
+            margin-top: fluid-to-laptop(20,24);
+            padding-top: fluid-to-laptop(20,24);
+            border-top: var(--border);
+            
+            @include laptop {
+                padding-top: fluid(16,20);
+                margin-top: fluid(16,20);
+            }
+        }
+
+    }
+
+    @include laptop {
+        --indicatorSize: #{rem(14)};
+    }
+}

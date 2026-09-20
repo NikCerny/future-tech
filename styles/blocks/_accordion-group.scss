@@ -1,0 +1,10 @@
+@use '../helpers/' as *;
+
+.accordion-group {
+    display: grid;
+    
+    gap: fluid-to-laptop(24,30);
+    @include laptop {
+        gap: fluid(20,24);
+    }
+}

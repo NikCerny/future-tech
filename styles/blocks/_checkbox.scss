@@ -1,0 +1,40 @@
+@use '../helpers/' as *;
+
+.checkbox {
+    
+    display: flex;
+    gap: rem(10);
+    align-items: center;
+    &__input {
+        appearance: none;
+        margin: 0;
+        --checkboxSize: #{rem(28)};
+        @include square(var(--checkboxSize));
+        @include flex-center;
+        border: var(--border);
+        background-color: var(--color-dark-10);
+        border-radius: rem(4);
+        @include laptop {
+            --checkboxSize: #{rem(24)};
+        }
+
+        &::after {
+            content: '✓';
+            font-weight: 500;
+        }
+
+        &:not(:checked){
+            &::after {
+                @include hide;
+            }
+        }
+
+        @include hover {
+            border-color: var(--color-accent);
+        }
+    }
+
+    @include hover {
+        color: var(--color-accent);
+    }
+}

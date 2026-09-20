@@ -1,0 +1,32 @@
+@use '../helpers/' as *;
+
+.form-feedback {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: fluid(20,50);
+
+    &__cell {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        gap: fluid-to-laptop(12,16);
+        &--wide {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__submit-button {
+        @include tablet-above {
+            padding-inline: fluid-to-laptop(34,46)
+        }
+    }
+
+    &__agreement {
+        color: var(--color-white);
+    }
+}

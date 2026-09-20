@@ -44,7 +44,14 @@
 @use 'blocks/table-of-contents';
 @use 'blocks/expandable-content';
 @use 'blocks/report-card';
-
+@use 'blocks/contacts-card';
+@use 'blocks/contacts';
+@use 'blocks/field';
+@use 'blocks/select';
+@use 'blocks/checkbox';
+@use 'blocks/accordion';
+@use 'blocks/accordion-group';
+@use 'blocks/form-feedback';
 
 
 @use 'utils'; // important AS LAST for style weight
