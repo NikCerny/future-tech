@@ -27,6 +27,10 @@
         @include hover {
             border-color: var(--color-accent);
         }
+
+        &--select {
+            height: 100%;
+        }
     }
 
     &__required-star {

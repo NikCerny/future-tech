@@ -45,8 +45,14 @@
         .border-grid {
             &__item {
                 @include laptop-above {
-                    &:not(:last-child){
-                        border-right: var(--border);
+                    &:not(:last-child)::after{
+                        content: '';
+                        position: absolute;
+                        left: calc(100% + var(--columnGap) / 2);
+                        width: rem(1.1);
+                        height: 100%;
+                        top: 0;
+                        background-color: var(--color-dark-15);
                     }
                 }
                 @include laptop {

@@ -2,7 +2,12 @@
 
 .form-feedback {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    @include mobile-above {
+        grid-template-columns: repeat(2,1fr);
+    }
+    @include mobile {
+        padding-inline: rem(20);
+    }
     gap: fluid(20,50);
 
     &__cell {
@@ -18,11 +23,18 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @include mobile {
+            flex-direction: column;
+            row-gap: rem(20);
+        }
     }
 
     &__submit-button {
         @include tablet-above {
             padding-inline: fluid-to-laptop(34,46)
+        }
+        @include mobile {
+            width: 100%;
         }
     }
 

@@ -4,4 +4,19 @@
     &__header {
         border-bottom: var(--border);
     }
+
+    &__body {
+        .card__preview {
+            @include mobile {
+                padding-block: rem(40);
+            }
+
+            &-link {
+                @include mobile-above {
+                    align-self: start;
+                }
+            }
+        }
+        
+    }
 }

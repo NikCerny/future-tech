@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Future Tech | Contacts</title>
     <link rel="stylesheet" href="./styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/7.6.1/imask.min.js"></script>
     <script src="./scripts/main.js" type="module"></script>
   </head>
   <body>
@@ -217,7 +218,7 @@
             </li>
           </ul>
         </header>
-        <div class="bontacts__body">
+        <div class="contacts__body">
           <div class="list">
             <div class="list__item">
               <div class="card container">
@@ -285,12 +286,43 @@
                       <label for="phoneNumber" class="field__label"
                         >Phone Number</label
                       >
-                      <div class="field__body">
-                        <div class="select">select</div>
+                      <div class="field__body" data-js-phone-input>
+                        <div class="select" data-js-select>
+                          <label
+                            for="phoneNumberPrefix"
+                            class="select__label visually-hidden"
+                            id="select-label"
+                            >Phone number prefix</label
+                          ><select
+                            id="phoneNumberPrefix"
+                            class="select__control field__control field__control--select"
+                            tabindex="-1"
+                            data-js-select-control
+                          ></select>
+                          <div class="select__body">
+                            <div
+                              class="select__button field__control"
+                              tabindex="0"
+                              role="combobox"
+                              aria-expanded="false"
+                              aria-haspopup="listbox"
+                              aria-controls="select-dropdown"
+                              aria-labelledby="select-label"
+                              data-js-select-button
+                            ></div>
+                            <div
+                              class="select__dropdown"
+                              role="listbox"
+                              id="select-dropdown"
+                              aria-labelledby="select-label"
+                              data-js-select-dropdown
+                            ></div>
+                          </div>
+                        </div>
                         <input
                           type="text"
                           class="field__control"
-                          placeholder="(999)-999-999-999"
+                          data-js-phone-input-control
                         />
                       </div>
                     </div>
@@ -324,8 +356,8 @@
                                 class="field__required-star"
                                 aria-hidden="true"
                                 >*</span
-                              > I agree with Terms of Use and Privacy
-                              Policy</span
+                              >
+                              I agree with Terms of Use and Privacy Policy</span
                             >
                           </label>
                         </div>
@@ -365,7 +397,7 @@
                     </div>
                     <a
                       href="#"
-                      class="card__preview-link button button--dark-gray card__preview-link--short"
+                      class="card__preview-link button button--dark-gray"
                       ><span class="icon icon--yellow-arrow"
                         >Ask Question</span
                       ></a

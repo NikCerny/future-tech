@@ -12,6 +12,7 @@
         display: flex;
         flex-direction: column;
         gap: fluid-to-laptop(10,15);
+
     }
 
     &__link {
@@ -27,12 +28,22 @@
             background-color: var(--color-dark-10);
             border: var(--border);
             border-radius: rem(6);
+            transition-duration: var(--transition-duration);
+            @include hover {
+                border-color: var(--color-accent);
+            }
         }
         .socials__link {
             @include extended-click-area-padding(var(--paddingBlockSocials), var(--paddingInlineSocials));
         }
         .socials__link svg {
             @include square(rem(24))
+        }
+
+        .socials__list {
+            @include mobile {
+                justify-content: center;
+            }
         }
     }
 }
