@@ -6,6 +6,7 @@ import AnchorNavigationCollection from "./AnchorNavigation.js";
 import InputMaskCollection from "./InputMask.js";
 import PhoneSelectCollection from "./PhoneSelect.js";
 import PhoneInputCollection from "./PhoneInput.js";
+import { SelectCollection } from "./Select.js";
 
 new Header();
 new TabsCollection();
@@ -14,5 +15,6 @@ const expandableContentCollection = new ExpandableContentCollection();
 
 new AnchorNavigationCollection(expandableContentCollection);
 new InputMaskCollection();
+new SelectCollection();
 new PhoneSelectCollection();
 new PhoneInputCollection();

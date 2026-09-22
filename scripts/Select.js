@@ -1,6 +1,6 @@
 import MatchMedia from "./MatchMedia.js";
 
-const rootSelector = "[data-js-select]";
+const rootSelector = '[data-js-select="default"]';
 
 class Select {
   selectors = {
@@ -270,8 +270,11 @@ class Select {
   };
 
   onOriginalControlChange = () => {
-    this.state.selectedOptionElement =
-      this.optionElements[this.originalControlElement.selectedIndex];
+    const selectedIndex = this.originalControlElement.selectedIndex;
+
+    this.state.currentOptionIndex = selectedIndex;
+    this.state.selectedOptionElement = this.optionElements[selectedIndex];
+
     this.updateUI();
   };
 
@@ -295,4 +298,16 @@ class Select {
   }
 }
 
-export default Select;
+class SelectCollection {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    document.querySelectorAll(rootSelector).forEach((element) => {
+      new Select(element);
+    });
+  }
+}
+
+export { Select, SelectCollection };

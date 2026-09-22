@@ -1,7 +1,7 @@
-import Select from "./Select.js";
+import { Select } from "./Select.js";
 import phoneCountries from "./phoneCountries.js";
 
-const rootSelector = "[data-js-select]";
+const rootSelector = '[data-js-select="phone"]';
 
 class PhoneSelect extends Select {
   createOptions(options) {
