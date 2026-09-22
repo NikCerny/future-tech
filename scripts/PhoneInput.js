@@ -18,9 +18,14 @@ class PhoneInput {
     this.inputElement = this.rootElement.querySelector(this.selectors.input);
 
     this.mask = null;
-
+    this.init();
     this.updateMask();
     this.bindEvents();
+  }
+
+  init() {
+    const isLibReady = typeof window.IMask !== undefined;
+    if (!isLibReady) console.error("Library IMask failed to connect");
   }
 
   get selectedCountry() {
@@ -32,7 +37,6 @@ class PhoneInput {
   updateMask() {
     const selectedCountry = this.selectedCountry;
 
-
     if (!selectedCountry) {
       return;
     }
@@ -43,15 +47,15 @@ class PhoneInput {
         mask: selectedCountry.mask,
       });
     } else {
-      this.mask = IMask(this.inputElement, {
+      this.mask = window.IMask(this.inputElement, {
         mask: selectedCountry.mask,
       });
     }
+
     this.inputElement.placeholder = selectedCountry.mask;
   }
 
   onSelectChange = () => {
-    
     this.updateMask();
   };
 

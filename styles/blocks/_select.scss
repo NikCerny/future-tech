@@ -2,13 +2,14 @@
 
 .select {
     align-self: stretch;
-    &__control {
+    
+    &__default-control {
         @include mobile-above {
             @include visually-hidden;
         }
     }
 
-    &__body {
+    &__custom {
         @include mobile {
             @include visually-hidden;
         }

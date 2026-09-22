@@ -1,4 +1,4 @@
-// import MatchMedia from './MatchMedia.js'
+import MatchMedia from "./MatchMedia.js";
 import phoneCountries from "./phoneCountries.js";
 
 const rootSelector = "[data-js-select]";
@@ -60,7 +60,7 @@ class Select {
 
     this.updateUI();
     this.fixDropdownPosition();
-    // this.updateTabIndexes()
+    this.updateTabIndexes()
     this.bindEvents();
   }
 
@@ -151,10 +151,10 @@ class Select {
     );
   }
 
-  //   updateTabIndexes(isMobileDevice = MatchMedia.mobile.matches) {
-  //     this.originalControlElement.tabIndex = isMobileDevice ? 0 : -1
-  //     this.buttonElement.tabIndex = isMobileDevice ? -1 : 0
-  //   }
+  updateTabIndexes(isMobileDevice = MatchMedia.mobile.matches) {
+    this.originalControlElement.tabIndex = isMobileDevice ? 0 : -1;
+    this.buttonElement.tabIndex = isMobileDevice ? -1 : 0;
+  }
 
   get isNeedToExpand() {
     const isButtonFocused = document.activeElement === this.buttonElement;
@@ -275,7 +275,7 @@ class Select {
   };
 
   bindEvents() {
-    // MatchMedia.mobile.addEventListener("change", this.onMobileMatchMediaChange);
+    MatchMedia.mobile.addEventListener("change", this.onMobileMatchMediaChange);
     this.buttonElement.addEventListener("click", this.onButtonClick);
     document.addEventListener("click", this.onClick);
     this.rootElement.addEventListener("keydown", this.onKeyDown);

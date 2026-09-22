@@ -1,0 +1,10 @@
+@use '../helpers/' as *;
+
+.select-tmp {
+    
+    &__option {
+        &.is-selected {
+            color: var(--color-accent);
+        }
+    }
+}

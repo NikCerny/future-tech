@@ -12,13 +12,13 @@ class Header {
 
     constructor(){
         this.rootElem = document.querySelector(this.selectors.root);
-        this.overlayElem = this.rootElem.querySelector(this.selectors.overlay);
-        this.burgerButtonElem = this.rootElem.querySelector(this.selectors.burgerButton);
+        this.overlayElem = this.rootElem?.querySelector(this.selectors.overlay);
+        this.burgerButtonElem = this.rootElem?.querySelector(this.selectors.burgerButton);
         this.bindEvents();
     }
 
     bindEvents(){
-        this.burgerButtonElem.addEventListener('click', this.onBurgerButtonClick);
+        this.burgerButtonElem?.addEventListener('click', this.onBurgerButtonClick);
     }
 
     onBurgerButtonClick = () => {

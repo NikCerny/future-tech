@@ -2615,7 +2615,7 @@ h6, .h6 {
   align-self: stretch;
 }
 @media (width > 47.99875rem) {
-  .select__control {
+  .select__default-control {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -2629,7 +2629,7 @@ h6, .h6 {
   }
 }
 @media (width <= 47.99875rem) {
-  .select__body {
+  .select__custom {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -2642,7 +2642,7 @@ h6, .h6 {
     overflow: hidden !important;
   }
 }
-.select__body {
+.select__custom {
   position: relative;
 }
 .select__button {
@@ -2925,6 +2925,10 @@ h6, .h6 {
 }
 .form-feedback__agreement {
   color: var(--color-white);
+}
+
+.select-tmp__option.is-selected {
+  color: var(--color-accent);
 }
 
 .visually-hidden {

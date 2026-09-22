@@ -295,11 +295,11 @@
                             >Phone number prefix</label
                           ><select
                             id="phoneNumberPrefix"
-                            class="select__control field__control field__control--select"
+                            class="select__default-control field__control field__control--select"
                             tabindex="-1"
                             data-js-select-control
                           ></select>
-                          <div class="select__body">
+                          <div class="select__custom">
                             <div
                               class="select__button field__control"
                               tabindex="0"
@@ -323,6 +323,7 @@
                           type="text"
                           class="field__control"
                           data-js-phone-input-control
+                          id="phoneNumber"
                         />
                       </div>
                     </div>
@@ -336,7 +337,6 @@
                         ></label
                       >
                       <textarea
-                        type="text"
                         class="field__control field__control--textarea"
                         id="message"
                         placeholder="Enter your message"
@@ -349,7 +349,8 @@
                           <label class="checkbox"
                             ><input
                               type="checkbox"
-                              class="checkbox__input required"
+                              class="checkbox__input"
+                              required
                             />
                             <span class="checkbox__label"
                               ><span
