@@ -1,5 +1,4 @@
 import MatchMedia from "./MatchMedia.js";
-import phoneCountries from "./phoneCountries.js";
 
 const rootSelector = "[data-js-select]";
 
@@ -32,7 +31,7 @@ class Select {
     selectedOptionElement: null,
   };
 
-  constructor(rootElement, options) {
+  constructor(rootElement, optionElements = null) {
     this.rootElement = rootElement;
 
     this.originalControlElement = this.rootElement.querySelector(
@@ -45,7 +44,9 @@ class Select {
       this.selectors.dropdown,
     );
 
-    this.createOptions(options);
+    if (optionElements) {
+      this.createOptions(optionElements);
+    }
 
     this.optionElements = this.dropdownElement.querySelectorAll(
       this.selectors.option,
@@ -60,7 +61,7 @@ class Select {
 
     this.updateUI();
     this.fixDropdownPosition();
-    this.updateTabIndexes()
+    this.updateTabIndexes();
     this.bindEvents();
   }
 
@@ -285,27 +286,6 @@ class Select {
     );
   }
 
-  createOptions(options) {
-    options.forEach(({ dialCode }, index) => {
-      const originalOption = document.createElement("option");
-
-      originalOption.value = dialCode;
-      originalOption.textContent = dialCode;
-
-      this.originalControlElement.append(originalOption);
-
-      const customOption = document.createElement("div");
-
-      customOption.className = "select__option";
-      customOption.textContent = dialCode;
-      customOption.setAttribute("role", "option");
-      customOption.setAttribute("aria-selected", "false");
-      customOption.dataset.jsSelectOption = "";
-      customOption.id = `${this.originalControlElement.id}-option-${index + 1}`;
-
-      this.dropdownElement.append(customOption);
-    });
-  }
   notifyChange() {
     this.rootElement.dispatchEvent(
       new CustomEvent("select-change", {
@@ -315,16 +295,4 @@ class Select {
   }
 }
 
-class SelectCollection {
-  constructor() {
-    this.init();
-  }
-
-  init() {
-    document.querySelectorAll(rootSelector).forEach((element) => {
-      new Select(element, phoneCountries);
-    });
-  }
-}
-
-export default SelectCollection;
+export default Select;
