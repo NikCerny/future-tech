@@ -18,6 +18,7 @@ class SelectTmp {
 
   initialStates = {
     isExpanded: false,
+    currentOptionIndex: null,
   };
 
   stateAttributes = {
@@ -38,6 +39,12 @@ class SelectTmp {
       `.${this.stateClasses.isSelected}`,
     );
 
+    const currentOptionElem = this.dropdownElem.querySelector(
+      `.${this.stateClasses.isCurrentBeforeClick}`,
+    );
+
+    this.currentOptionIndex = [...this.optionElems].indexOf(currentOptionElem);
+
     this.bindEvents();
     this.updateButtonUI();
     this.fixDropdownPosition();
@@ -46,9 +53,9 @@ class SelectTmp {
   bindEvents() {
     this.buttonElem.addEventListener("click", this.onButtonClick);
 
-    this.optionElems.forEach((optionElem) => {
+    this.optionElems.forEach((optionElem, index) => {
       optionElem.addEventListener("click", () => {
-        this.onOptionClick(optionElem);
+        this.onOptionClick(optionElem, index);
       });
     });
 
@@ -63,14 +70,12 @@ class SelectTmp {
     );
   };
 
-  onOptionClick = (newOptionElem) => {
+  onOptionClick = (newOptionElem, newOptionIndex) => {
     this.selectedOptionElem.classList.remove(this.stateClasses.isSelected);
 
-    const currentOption = this.dropdownElem.querySelector(
-      `.${this.stateClasses.isCurrentBeforeClick}`,
+    this.optionElems[this.currentOptionIndex].classList.remove(
+      this.stateClasses.isCurrentBeforeClick,
     );
-
-    currentOption.classList.remove(this.stateClasses.isCurrentBeforeClick);
 
     this.selectedOptionElem.setAttribute(
       this.stateAttributes.ariaSelected,
@@ -78,18 +83,19 @@ class SelectTmp {
     );
 
     this.selectedOptionElem = newOptionElem;
+    this.currentOptionIndex = newOptionIndex;
+
     this.selectedOptionElem.classList.add(
       this.stateClasses.isSelected,
       this.stateClasses.isCurrentBeforeClick,
     );
+
     this.selectedOptionElem.setAttribute(
       this.stateAttributes.ariaSelected,
       true,
     );
-    this.buttonElem.setAttribute(
-      this.stateAttributes.ariaActiveDescendant,
-      newOptionElem.id,
-    );
+
+    this.updateActiveDescendant();
     this.updateButtonUI();
     this.onButtonClick();
   };
@@ -134,49 +140,39 @@ class SelectTmp {
   };
 
   onArrowUpKeyDown = () => {
-    const currentOption = this.dropdownElem.querySelector(
-      `.${this.stateClasses.isCurrentBeforeClick}`,
-    );
     if (this.isNeedToExpand) {
       this.onButtonClick();
-      this.buttonElem.setAttribute(
-        this.stateAttributes.ariaActiveDescendant,
-        currentOption.id,
-      );
+      this.updateActiveDescendant();
       return;
     }
-
-    const previousOption =
-      currentOption.previousElementSibling ??
-      this.optionElems[this.optionElems.length - 1];
-
-    currentOption.classList.remove(this.stateClasses.isCurrentBeforeClick);
-    previousOption.classList.add(this.stateClasses.isCurrentBeforeClick);
-    this.buttonElem.setAttribute(
-      this.stateAttributes.ariaActiveDescendant,
-      previousOption.id,
-    );
+    this.moveCurrentOption(-1);
   };
 
   onArrowDownKeyDown = () => {
-    const currentOption = this.dropdownElem.querySelector(
-      `.${this.stateClasses.isCurrentBeforeClick}`,
-    );
     if (this.isNeedToExpand) {
       this.onButtonClick();
-      this.buttonElem.setAttribute(
-        this.stateAttributes.ariaActiveDescendant,
-        currentOption.id,
-      );
+      this.updateActiveDescendant();
       return;
     }
+    this.moveCurrentOption(1);
+  };
 
-    const nextOption = currentOption.nextElementSibling ?? this.optionElems[0];
-    currentOption.classList.remove(this.stateClasses.isCurrentBeforeClick);
-    nextOption.classList.add(this.stateClasses.isCurrentBeforeClick);
+  moveCurrentOption = (direction) => {
+    this.optionElems[this.currentOptionIndex].classList.remove(
+      this.stateClasses.isCurrentBeforeClick,
+    );
+
+    this.currentOptionIndex =
+      (this.currentOptionIndex + direction + this.optionElems.length) %
+      this.optionElems.length;
+
+    const currentOption = this.optionElems[this.currentOptionIndex];
+
+    currentOption.classList.add(this.stateClasses.isCurrentBeforeClick);
+
     this.buttonElem.setAttribute(
       this.stateAttributes.ariaActiveDescendant,
-      nextOption.id,
+      currentOption.id,
     );
   };
 
@@ -186,17 +182,14 @@ class SelectTmp {
       return;
     }
 
-    const currentOption = this.dropdownElem.querySelector(
-      `.${this.stateClasses.isCurrentBeforeClick}`,
-    );
-    this.onOptionClick(currentOption);
+    const currentOption = this.optionElems[this.currentOptionIndex];
+    this.onOptionClick(currentOption, this.currentOptionIndex);
   };
 
-  get isNeedToExpand() {
-    const isButtonFocused = document.activeElement === this.buttonElem;
-
-    return (
-      !this.dropdownElem.classList.contains("is-expanded") && isButtonFocused
+  updateActiveDescendant() {
+    this.buttonElem.setAttribute(
+      this.stateAttributes.ariaActiveDescendant,
+      this.optionElems[this.currentOptionIndex].id,
     );
   }
 }
@@ -214,4 +207,3 @@ class SelectCollectionTmp {
 }
 
 export default SelectCollectionTmp;
-
