@@ -7,6 +7,7 @@ import InputMaskCollection from "./InputMask.js";
 import PhoneSelectCollection from "./PhoneSelect.js";
 import PhoneInputCollection from "./PhoneInput.js";
 import { SelectCollection } from "./Select.js";
+import SelectCollectionTmp from "./Select_tmp.js";
 
 new Header();
 new TabsCollection();
@@ -18,3 +19,4 @@ new InputMaskCollection();
 new SelectCollection();
 new PhoneSelectCollection();
 new PhoneInputCollection();
+new SelectCollectionTmp();

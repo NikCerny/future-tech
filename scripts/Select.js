@@ -207,6 +207,9 @@ class Select {
     if (this.state.currentOptionIndex > 0) {
       this.state.currentOptionIndex--;
       this.updateUI();
+    } else {
+      this.state.currentOptionIndex = this.optionElements.length - 1;
+      this.updateUI();
     }
   };
 
@@ -220,20 +223,10 @@ class Select {
     if (this.state.currentOptionIndex < this.optionElements.length - 1) {
       this.state.currentOptionIndex++;
       this.updateUI();
-    }
-  };
-
-  onSpaceKeyDown = () => {
-    if (this.isNeedToExpand) {
-      this.expand();
+    } else {
+      this.state.currentOptionIndex = 0;
       this.updateUI();
-      return;
     }
-
-    this.selectCurrentOption();
-    this.collapse();
-    this.updateUI();
-    this.notifyChange();
   };
 
   onEnterKeyDown = () => {
@@ -255,7 +248,7 @@ class Select {
     const action = {
       ArrowUp: this.onArrowUpKeyDown,
       ArrowDown: this.onArrowDownKeyDown,
-      Space: this.onSpaceKeyDown,
+      Space: this.onEnterKeyDown,
       Enter: this.onEnterKeyDown,
     }[code];
 

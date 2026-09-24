@@ -1,10 +1,101 @@
 @use '../helpers/' as *;
 
 .select-tmp {
+
     
-    &__option {
-        &.is-selected {
-            color: var(--color-accent);
+    display: flex;
+    justify-content: center;
+    margin-top: 100px; // tmp
+
+    &__custom {
+        position: relative;
+    }
+    
+    &__custom:has(.select-tmp__dropdown.is-expanded) {
+        .select-tmp__button::after {
+            rotate: -180deg;
         }
     }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: fluid-to-laptop(4,6);
+        transition-duration: var(--transition-duration);
+
+        &::after {
+            --size: #{rem(14)};
+            @include square(var(--size));
+            content: '';
+            background: url('/icons/arrow-down-select.svg') center / contain no-repeat;
+            
+            @include laptop {
+                --size: #{rem(12)};
+            }
+        }
+    }
+
+    &__option {
+        border: inherit;
+        border-radius: inherit;
+        display: flex;
+        justify-content: space-between;
+        padding: rem(5);
+
+        &.is-selected {
+            color: var(--color-accent);
+            background-color: var(--color-dark);
+
+            &::after {
+                content: '✓';
+            }
+        }
+
+        &.is-current {
+            border-color: var(--color-accent);
+        }
+
+        @include hover {
+            color: var(--color-accent);
+            background-color: var(--color-dark);
+        }
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: calc(100% + #{rem(5)});
+        display: grid;
+        row-gap: rem(5);
+        padding: rem(5);
+        min-width: rem(150);
+        border: var(--border);
+        padding: rem(5);
+        border-radius: rem(8);
+        background-color: var(--color-dark-10);
+        max-height: rem(250);
+        overflow-y: auto;
+        transition-duration: var(--transition-duration);
+
+        &.is-left-sided {
+            left: 0;
+            transform-origin: 0 0; 
+        }
+
+        &.is-right-sided {
+            right: 0;
+            transform-origin: 100% 0;
+        }
+
+        &:not(.is-expanded) {
+            @include hide;
+            scale: 0;
+        }
+    }
+
+    &__option, &__button {
+        user-select: none;
+        cursor: pointer;
+    }
+
 }
