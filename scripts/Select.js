@@ -181,6 +181,7 @@ class Select {
 
     if (!isButtonClick && isOutsideDropdownClick) {
       this.collapse();
+      this.updateUI();
       return;
     }
 

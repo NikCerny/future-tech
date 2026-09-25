@@ -9,6 +9,10 @@
         }
     }
 
+    &__default-control.field__control {
+        width: auto;
+    }
+
     &__custom {
         @include mobile {
             @include visually-hidden;

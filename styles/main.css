@@ -2628,6 +2628,9 @@ h6, .h6 {
     overflow: hidden !important;
   }
 }
+.select__default-control.field__control {
+  width: auto;
+}
 @media (width <= 47.99875rem) {
   .select__custom {
     position: absolute !important;
